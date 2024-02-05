@@ -1,6 +1,7 @@
 
 import type { APIRoute } from 'astro';
-import {getAllUsers, AddOrUpdateData } from "../../lib/db";
+// import {getAllUsers} from "../../lib/db";
+import {AddOrUpdateData } from "../../lib/db";
 
 // Not needed right now but could be used in the future
 // export const GET: APIRoute = async ({ params, request }) => {
