@@ -26,11 +26,12 @@ async function getData() {
             console.log("Cached Profile State:", cachedProfileState);
 
             // The URL where you want to send the POST request
-            const apiUrl = 'https://n1-lb.vercel.app/api/Update';
+            const apiUrl = 'https://n1-lb.vercel.app/api/update';
 
             // send the POST request
             fetch(apiUrl, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
