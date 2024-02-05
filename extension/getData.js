@@ -31,7 +31,6 @@ async function getData() {
             // send the POST request
             fetch(apiUrl, {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
