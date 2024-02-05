@@ -57,3 +57,43 @@ export async function AddOrUpdateData(name, updated) {
         console.error(e);
     }
 }
+
+
+export const getTopXUsersByKDRatio = async (x) => {
+    const db = await getDB();
+
+    const topXUsers = await db.collection("LB")
+        .aggregate([
+            {
+                $addFields: {
+                    kdRatio: {
+                        $cond: {
+                            if: { $gt: ["$stats.deaths", 0] },
+                            then: { $divide: ["$stats.kills", "$stats.deaths"] },
+                            else: "$stats.kills"
+                        }
+                    }
+                }
+            },
+            { $sort: { kdRatio: -1 } },
+            { $limit: x }
+        ])
+        .toArray();
+
+    return topXUsers;
+};
+
+
+
+export const getTopXUsersByStat = async (stat, x) => {
+    const db = await getDB();
+
+    // Sort users by the specified stat in descending order and limit to X
+    const topXUsers = await db.collection("LB")
+        .find({})
+        .sort({ [`stats.${stat}`]: -1 })
+        .limit(x)
+        .toArray();
+
+    return topXUsers;
+};

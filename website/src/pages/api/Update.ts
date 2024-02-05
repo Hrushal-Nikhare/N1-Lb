@@ -2,20 +2,20 @@
 import type { APIRoute } from 'astro';
 import {getAllUsers, AddOrUpdateData } from "../../lib/db";
 
+// Not needed right now but could be used in the future
+// export const GET: APIRoute = async ({ params, request }) => {
+//     const users = await getAllUsers();
+//     if (!users) {
+//         return new Response(null, {
+//             status: 404,
+//             statusText: "Not found",
+//         });
+//     }
 
-export const GET: APIRoute = async ({ params, request }) => {
-    const users = await getAllUsers();
-    if (!users) {
-        return new Response(null, {
-            status: 404,
-            statusText: "Not found",
-        });
-    }
-
-    return new Response(JSON.stringify(users), {
-        status: 200,
-    });
-}
+//     return new Response(JSON.stringify(users), {
+//         status: 200,
+//     });
+// }
 
 
 
