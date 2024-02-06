@@ -1,6 +1,6 @@
 
 import type { APIRoute } from 'astro';
-// import {getAllUsers} from "../../lib/db";
+// import {getAllUsers} from "../../lib/db"; // for GET request
 import { AddOrUpdateData } from "../../lib/db";
 
 // Not needed right now but could be used in the future
@@ -18,7 +18,13 @@ import { AddOrUpdateData } from "../../lib/db";
 //     });
 // }
 
-
+export const ALL: APIRoute = ({ request }) => {
+    return new Response(JSON.stringify({
+        status: 200,
+        body: "OK"
+    })
+    )
+}
 
 export const POST: APIRoute = async ({ request }) => {
     if (request.headers.get("Content-Type") === "application/json") {
