@@ -44,7 +44,7 @@ export const getAllUsers = async () => {
 
 async function upsertListingByName(nameOfListing, updatedListing) {
     const db = await getDB();
-    const result = await db.collection("LB")
+    await db.collection("LB")
         .updateOne({ name: nameOfListing },
             { $set: updatedListing },
             { upsert: true });
