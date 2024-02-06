@@ -18,7 +18,7 @@ import { AddOrUpdateData } from "../../lib/db";
 //     });
 // }
 export const ALL: APIRoute = async ({ request }) => {
-    return new Response(null, {
+    return new Response(JSON.stringify("found"), {
         status: 200,
         headers: {
             "Content-Type": "application/json",
