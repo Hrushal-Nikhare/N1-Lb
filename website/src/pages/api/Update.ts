@@ -17,6 +17,15 @@ import { AddOrUpdateData } from "../../lib/db";
 //         status: 200,
 //     });
 // }
+export const ALL: APIRoute = async ({ request }) => {
+    return new Response(null, {
+        status: 200,
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+    });
+}
 
 
 export const POST: APIRoute = async ({ request }) => {
@@ -24,9 +33,20 @@ export const POST: APIRoute = async ({ request }) => {
         const User = await request.json();
         // console.log(User.username, User)
         await AddOrUpdateData(User.username, User);
-        return new Response(null, {
-            status: 200
+        return new Response(JSON.stringify(null), {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
         });
     }
-    return new Response(null, { status: 400 });
+    return new Response(null, {
+        status: 400,
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+    });
+
 }
