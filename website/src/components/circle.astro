@@ -1,0 +1,90 @@
+---
+interface Props {
+	position: string;
+	width: string;
+	player: string;
+	stat: string;
+}
+
+var { position, width, player, stat } = Astro.props;
+var ring_color = "";
+var border_thickness = "";
+
+if (position === "1") {
+	ring_color = "#FFCF23";
+} else if (position === "2") {
+	ring_color = "#C0C0C0";
+} else {
+	ring_color = "#CD7F32";
+}
+border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
+---
+
+<div class="circle">
+	<div class="medal">
+		<div class="position">
+			{position}
+		</div>
+	</div>
+	<div class="player">
+		{player}
+	</div>
+	<div class="stat">
+		{stat}
+	</div>
+</div>
+
+<style define:vars={{ ring_color, width, border_thickness }}>
+	div.circle {
+		color: white;
+
+		width: var(--width);
+	}
+	div.medal {
+		position: relative;
+		width: var(--width);
+		height: var(--width);
+		flex-shrink: 0;
+		border-radius: 450px;
+		color: #000;
+		border: var(--border_thickness) solid var(--ring_color);
+		background-image: url("/skin.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-color: rgba(195, 219, 197, 0.5);
+	}
+	div.position {
+		border: calc(var(--border_thickness) / 10) solid #000;
+		width: min-content;
+		flex-shrink: 0;
+		/* padding: 5px 15px; */
+		width: calc(var(--width) / 7);
+		height: calc(var(--width) / 7);
+		position: absolute;
+		bottom: -10%;
+		left: 44%;
+		line-height: calc(var(--width) / 7);
+		/* margin: 15px; */
+		border-radius: 999px;
+		text-align: center;
+		vertical-align: middle;
+		font-size: 2em;
+		background-color: var(--ring_color);
+	}
+	div.player {
+		text-align: center;
+		vertical-align: middle;
+		font-size: 4em;
+		margin: 10px;
+		margin-top: 30px;
+	}
+	div.stat {
+		width: fit-content;
+		margin: auto;
+		text-align: center;
+		font-size: 3rem;
+		padding: 20px;
+		background-color: rgba(121, 121, 121, 0.3);
+		border-radius: 20px;
+	}
+</style>

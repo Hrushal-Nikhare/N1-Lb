@@ -1,0 +1,55 @@
+---
+interface Props {
+	position: string;
+	player: string;
+	stat: string;
+}
+var { position, player, stat } = Astro.props;
+---
+
+<div class="fancy">
+	<h1>{position}</h1>
+	<div class="medal"></div>
+	<h1>{player}</h1>
+
+	<div class="right">
+		<h1 class="stat">{stat}</h1>
+	</div>
+</div>
+<div
+	style="width: 100%; height: 2px; background: rgba(255, 255, 255, 0.6); overflow: hidden;"
+>
+</div>
+
+<style>
+	.stat {
+		text-align: right;
+	}
+	div.right {
+		position: absolute;
+		right: 5%;
+	}
+	div.meh .medal {
+		margin: 0 40px;
+	}
+	div.fancy {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 100%;
+	}
+	div h1 {
+		font-size: 4rem;
+	}
+	div.medal {
+		margin: 0 50px;
+		width: 125px;
+		height: 125px;
+		border-radius: 450px;
+		color: #000;
+		background-image: url("/skin.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-color: rgba(195, 219, 197, 0.5);
+	}
+</style>

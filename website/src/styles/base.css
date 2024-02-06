@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+@font-face {
+    font-family: "Lean";
+    src: url('/Lean Foreword.otf');
+    src: url('/Lean Foreword.otf') format('opentype'),
+
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: #1E212B;
+    font-family: 'Poiret One', sans-serif;
+}
+
+.circle ,.fancy{
+    font-family: "Lean", sans-serif;
+}
+
+.splash .text h1{
+    font-size: 7rem;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.splash .text{
+    font-size: 4rem;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.splash{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/N1bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h1.fancy{
+    font-size: 6rem;
+    text-align: center;
+}
