@@ -21,7 +21,10 @@ import { AddOrUpdateData } from "../../lib/db";
 export const ALL: APIRoute = ({ request }) => {
     return new Response(JSON.stringify({
         status: 200,
-        body: "OK"
+        body: "OK",
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        }
     })
     )
 }
