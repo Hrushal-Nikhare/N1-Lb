@@ -2,6 +2,12 @@
 import type { APIRoute } from 'astro';
 import { getTopXUsersByStat, getTopXUsersByKDRatio } from "../../lib/db";
 
+export const GET: APIRoute = async ({ request }) => {
+    return new Response(null, {
+        status: 400,
+        statusText: "Bad request",
+    }); 
+}
 
 export const POST: APIRoute = async ({ request }) => {
     if (request.headers.get("Content-Type") === "application/json") {
