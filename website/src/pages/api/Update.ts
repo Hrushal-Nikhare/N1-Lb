@@ -23,6 +23,8 @@ export const ALL: APIRoute = async ({ request }) => {
         headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "https://narrow.one",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS", // Add the allowed methods
+            "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With", // Add the allowed headers
         },
     });
 }
@@ -38,14 +40,18 @@ export const POST: APIRoute = async ({ request }) => {
             headers: {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "https://narrow.one",
+                "Access-Control-Allow-Methods": "POST, OPTIONS", // Add the allowed methods
+                "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With", // Add the allowed headers
             },
         });
     }
     return new Response(null, {
-        status: 400,
+        status: 200,
         headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "https://narrow.one",
+            "Access-Control-Allow-Methods": "POST, OPTIONS", // Add the allowed methods
+            "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With", // Add the allowed headers
         },
     });
 
