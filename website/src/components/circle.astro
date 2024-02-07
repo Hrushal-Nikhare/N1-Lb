@@ -23,7 +23,9 @@ border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
 <div class="circle">
 	<div class="medal">
 		<div class="position">
-			{position}
+			<div>
+				{position}
+			</div>
 		</div>
 	</div>
 
@@ -34,7 +36,10 @@ border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
 		{stat}
 	</div>
 </div>
-<style define:vars={{ ring_color, width, border_thickness }}>
+<style define:vars={{ ring_color, border_thickness }}>
+	:root {
+		--width: calc(100vw / 5);
+	}
 	div.circle {
 		color: white;
 		/* width: var(--width); */
@@ -52,29 +57,31 @@ border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-color: rgba(195, 219, 197, 0.5);
+		display: flex;
+		justify-content: center;
 	}
 	div.position {
 		border: calc(var(--border_thickness) / 10) solid #000;
 		width: min-content;
 		flex-shrink: 0;
 		/* padding: 5px 15px; */
-		width: calc(var(--width) / 7);
-		height: calc(var(--width) / 7);
+		width: calc(80vw / 35 + 30px);
+		height: calc(80vw / 35 + 30px);
 		position: absolute;
 		bottom: -10%;
-		left: 44%;
 		line-height: calc(var(--width) / 7);
 		/* margin: 15px; */
 		border-radius: 999px;
-		text-align: center;
-		vertical-align: middle;
-		font-size: 2em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: calc(2vw + 25px);
 		background-color: var(--ring_color);
 	}
 	div.player {
 		text-align: center;
 		vertical-align: middle;
-		font-size: 3.75em;
+		font-size: 4.6vw;
 		margin: 10px;
 		margin-top: 30px;
 	}
@@ -82,7 +89,7 @@ border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
 		width: fit-content;
 		margin: auto;
 		text-align: center;
-		font-size: 2.5rem;
+		font-size: 3.12vw;
 		padding: 20px;
 		background-color: rgba(121, 121, 121, 0.3);
 		border-radius: 20px;

@@ -40,12 +40,16 @@ var { position, player, stat } = Astro.props;
 		width: 100%;
 	}
 	div h1 {
-		font-size: 3rem;
+		max-width: 30vw;
+		font-size: calc(2.75vw + 20px);
+		overflow: hidden;
+		text-overflow:ellipsis;
+
 	}
 	div.medal {
 		margin: 0 50px;
-		width: 125px;
-		height: 125px;
+		width: 10vw;
+		height: 10vw;
 		border-radius: 450px;
 		color: #000;
 		background-image: url("/skin.png");
