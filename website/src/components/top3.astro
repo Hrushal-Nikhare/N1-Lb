@@ -1,0 +1,32 @@
+---
+import Circle from "./circle.astro";
+---
+
+<div class="wrapper">
+	<div class="top">
+		<Circle position="1" width="250px" player="JESPER 1" stat="5.3M" />
+	</div>
+	<div class="remain">
+		<Circle position="2" width="250px" player="JESPER 2" stat="5.2M" />
+		<Circle position="3" width="250px" player="JESPER 3" stat="5.1M" />
+	</div>
+</div>
+<br><br>
+
+<style>
+	.wrapper {
+		/* display: flex; */
+		/* justify-content: space-between; */
+		width: 100%;
+	}
+	div.top {
+		display: flex;
+		justify-content: center;
+	}
+
+	.remain {
+		display: flex;
+        justify-content: space-around;
+        /* margin: 0 10vw; */
+	}
+</style>

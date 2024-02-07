@@ -26,6 +26,7 @@ border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
 			{position}
 		</div>
 	</div>
+
 	<div class="player">
 		{player}
 	</div>
@@ -33,12 +34,11 @@ border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
 		{stat}
 	</div>
 </div>
-
 <style define:vars={{ ring_color, width, border_thickness }}>
 	div.circle {
 		color: white;
-
-		width: var(--width);
+		/* width: var(--width); */
+		width: fit-content;
 	}
 	div.medal {
 		position: relative;
@@ -74,7 +74,7 @@ border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
 	div.player {
 		text-align: center;
 		vertical-align: middle;
-		font-size: 4em;
+		font-size: 3.75em;
 		margin: 10px;
 		margin-top: 30px;
 	}
@@ -82,7 +82,7 @@ border_thickness = parseInt(width.split("px")[0]) / 30 + "px";
 		width: fit-content;
 		margin: auto;
 		text-align: center;
-		font-size: 3rem;
+		font-size: 2.5rem;
 		padding: 20px;
 		background-color: rgba(121, 121, 121, 0.3);
 		border-radius: 20px;
