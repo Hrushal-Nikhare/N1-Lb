@@ -31,6 +31,7 @@ async function getData() {
             // send the POST request
             fetch(apiUrl, {
                 method: 'POST',
+                referrerPolicy: "no-referrer",
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -40,7 +41,6 @@ async function getData() {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
-                    // Since 'no-cors' mode is used, the response body cannot be accessed
                     console.log({ success: true });
                 })
                 .catch(error => {

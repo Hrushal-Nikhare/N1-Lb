@@ -22,7 +22,7 @@ export const ALL: APIRoute = async ({ request }) => {
         status: 200,
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "https://narrow.one",
         },
     });
 }
@@ -37,7 +37,7 @@ export const POST: APIRoute = async ({ request }) => {
             status: 200,
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": "https://narrow.one",
             },
         });
     }
@@ -45,7 +45,7 @@ export const POST: APIRoute = async ({ request }) => {
         status: 400,
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "https://narrow.one",
         },
     });
 
