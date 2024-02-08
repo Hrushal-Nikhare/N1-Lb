@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 
 @font-face {
     font-family: "Lean";
@@ -16,9 +18,12 @@ body{
 }
 
 .circle ,.fancy{
-    font-family: "Lean", sans-serif;
+    font-family: 'Staatliches', sans-serif;
 }
 
+.title{
+    font-family: "Lean", sans-serif;
+}
 .splash .text h1{
     font-size: 7rem;
     margin: auto;
@@ -43,7 +48,7 @@ body{
     background-repeat: no-repeat;
 }
 
-h1.fancy{
+h1.title{
     font-size: 6rem;
     text-align: center;
 }

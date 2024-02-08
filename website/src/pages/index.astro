@@ -1,17 +1,39 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import Top3 from "../components/top3.astro";
 import Top from "../components/top.astro";
 import "../styles/base.css";
+
+const url = "https://n1-lb.vercel.app/api/lb";
+var stat = "kills";
+
+const options = {
+	method: "POST",
+	headers: { "content-type": "application/json" },
+	body: `{"stat":"${stat}","x":3}`,
+};
+
+try {
+	const response = await fetch(url, options);
+	var data = await response.json();
+	// console.log(data);
+} catch (error) {
+	console.error(error);
+}
 ---
 
-<div class="splash">
-	<div class="text">
-		The
-		<h1 class="fancy">Narrow One</h1>
-		Leader Board
+<Layout>
+	<div class="splash">
+		<div class="text">
+			The
+			<h1 class="title">Narrow One</h1>
+			Leader Board
+		</div>
 	</div>
-</div>
-
-<h1 class="fancy">Most Kills</h1>
-<Top3 />
-<Top />
+	
+	
+	<h1 class="title">Most Kills</h1>
+	<Top3 />
+	
+	<Top users={data} stat="kills"/>
+</Layout>

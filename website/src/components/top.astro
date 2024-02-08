@@ -1,18 +1,33 @@
 ---
 import Horizontal from "./horizontal.astro";
+import { abbreviateNumber } from "../lib/abbr.js";
+interface Props {
+	users: Array<Object>;
+	stat: string;
+}
+var {users, stat } = Astro.props;
+
 ---
 
 <div class="wrapper">
-	<Horizontal position="1" player="Jesper" stat="3.6M" />
-    <Horizontal position="1" player="Jesper" stat="3.6M" />
-    <Horizontal position="1" player="JesperJesperJesperJesperJesperJesper" stat="3.6M" />
+	<!-- loop over each object and add a element for each value -->
+	{
+		users.map((player, index) => (
+			<Horizontal
+				position={(index+1).toString()}
+				player={player.username}
+				stat={abbreviateNumber(player.stats[stat])}
+			/>
+		))
+	}
+	<!-- <Horizontal position="1" player="Jesper" stat="3.6M" /> -->
 </div>
 
 <style>
 	div.wrapper {
-        margin: auto;
+		margin: auto;
 		padding: 60px;
-        display: flex;
+		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 38px;
