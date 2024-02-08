@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 
 
 @font-face {
@@ -18,7 +18,7 @@ body{
 }
 
 .circle ,.fancy{
-    font-family: 'Staatliches', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .title{
