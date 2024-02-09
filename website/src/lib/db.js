@@ -94,6 +94,6 @@ export const getTopXUsersByStat = async (stat, x) => {
         .sort({ [`stats.${stat}`]: -1 })
         .limit(x)
         .toArray();
-
+        
     return topXUsers;
 };

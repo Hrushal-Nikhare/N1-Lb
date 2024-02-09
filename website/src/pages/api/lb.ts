@@ -25,7 +25,10 @@ export const POST: APIRoute = async ({ request }) => {
                     status: 200,
                 });
             } else {
+                // var startTime = performance.now()
                 const users = await getTopXUsersByStat(User.stat, User.x);
+                // var endTime = performance.now()
+                // console.log("Time taken to process request: " + (endTime - startTime) + "ms")
                 if (!users) {
                     return new Response(null, {
                         status: 404,
