@@ -34,7 +34,9 @@ export const POST: APIRoute = async ({ request }) => {
     if (request.headers.get("Content-Type") === "application/json") {
         const User = await request.json();
         // console.log(User.username, User)
-        await AddOrUpdateData(User.username, User);
+        if (User.stats.hasOwnProperty("deaths") && !User.isGuest) {
+            await AddOrUpdateData(User.username, User);
+        }
         return new Response(JSON.stringify(null), {
             status: 200,
             headers: {
