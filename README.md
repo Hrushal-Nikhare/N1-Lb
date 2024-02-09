@@ -3,17 +3,17 @@
 
 ### How To Participate
  - Download the Extension
- - everytime you reload you stats will be updated
+ - Every time you reload you stats will be updated
 
 ## Installation Instructions
 ### For Chrome
-- Download the `extension.crx` from the Releases Section
+- Download the `extension.crx` from the [Releases Section](https://github.com/Hrushal-Nikhare/N1-Lb/releases)
 - Open `chrome://extensions/` in your browser
 - Drag and drop the `extension.crx` file into the extensions page
 - Click `Add Extension` when prompted
 
 ### For Firefox
-- Download the `extension.zip` from the Releases Section
+- Download the `extension.zip` from the [Releases Section](https://github.com/Hrushal-Nikhare/N1-Lb/releases)
 - Open `about:config` in your browser
 - Set `xpinstall.signatures.required` to `false`
 - Open `about:addons` in your browser
