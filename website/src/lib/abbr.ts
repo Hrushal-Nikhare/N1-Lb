@@ -6,7 +6,7 @@ export function abbreviateNumber(number: number): string{
     var tier = Math.log10(Math.abs(number)) / 3 | 0;
 
     // if zero, we don't need a suffix
-    if(tier == 0) return number.toString();
+    if(tier == 0) return number.toFixed(1).toString();
 
     // get suffix and determine scale
     var suffix = SI_SYMBOL[tier];
