@@ -1,25 +1,34 @@
-interface LeaderdoardItem {
-    player: Player
-    stat: number
-}
 interface Player {
+    id: string,
+    is_guest: boolean,
+    stats: PlayerStats,
     username: string,
-    icon?: string
+    verified: string
+}
+
+type PlayerStats = {
+    [key in Stat]?: number
+};
+interface LeaderboardChunk {
+    data: Player[],
+    min: number,
+    max: number,
 }
 interface Leaderboard {
+    chunks: LeaderboardChunk[],
     stat: Stat
-    data: LeaderdoardItem[]
 }
+
 enum Stat {
     deaths = "deaths",
     elo = "elo",
     captures = "flagsCaptured",
-    gamesPlayed = "gamesPlayed",
+    games_played = "gamesPlayed",
     wins = "gamesWon",
     kills = "kills",
     points = "totalPoints",
     kdr = "kdratio"
 }
 
-export type { LeaderdoardItem, Leaderboard, Player };
+export type { Player, PlayerStats, Leaderboard, LeaderboardChunk };
 export { Stat };

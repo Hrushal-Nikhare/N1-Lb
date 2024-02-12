@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import type { Player } from '@/lib/leaderboard'
 defineProps<{
-    data: Player
+    username: string
 }>()
 </script>
 
 <template>
     <div class="player-badge">
-        <img :src="data.icon" v-if="data.icon">
         <p>
-            {{ data.username }}
+            {{ username }}
         </p>
     </div>
 </template>
