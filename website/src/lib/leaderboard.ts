@@ -9,6 +9,8 @@ interface Player {
 type PlayerStats = {
     [key in Stat]?: number
 };
+// the leaderboard will dynamically load more entries when the user scrolls down
+// each batch of entries is in its own chunk
 interface LeaderboardChunk {
     data: Player[],
     min: number,
