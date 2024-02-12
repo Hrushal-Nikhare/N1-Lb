@@ -8,6 +8,8 @@ defineProps<{
 
 <template>
     <ol class="leaderboard">
-        <LeaderboardItem v-for="item in data.data" :data="item"></LeaderboardItem>
+        <template v-for="chunk in data.chunks">
+            <LeaderboardItem v-for="player in chunk.data" :data="player"></LeaderboardItem>
+        </template>
     </ol>
 </template>
