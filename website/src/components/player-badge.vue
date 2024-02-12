@@ -5,9 +5,5 @@ defineProps<{
 </script>
 
 <template>
-    <div class="player-badge">
-        <p>
-            {{ username }}
-        </p>
-    </div>
+    <th class="player-badge">{{ username }}</th>
 </template>

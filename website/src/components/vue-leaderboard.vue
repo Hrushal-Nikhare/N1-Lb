@@ -7,9 +7,22 @@ defineProps<{
 </script>
 
 <template>
-    <ol class="leaderboard">
-        <template v-for="chunk in data.chunks">
-            <LeaderboardItem v-for="player in chunk.data" :data="player"></LeaderboardItem>
-        </template>
-    </ol>
+    <table class="leaderboard">
+        <thead>
+            <td></td>
+            <th>Deaths</th>
+            <th>Elo</th>
+            <th>Captures</th>
+            <th>Games Played</th>
+            <th>Wins</th>
+            <th>Kills</th>
+            <th>Points</th>
+            <th>kdr</th>
+        </thead>
+        <tbody>
+            <template v-for="chunk in data.chunks">
+                <LeaderboardItem v-for="player in chunk.data" :data="player"></LeaderboardItem>
+            </template>
+        </tbody>
+    </table>
 </template>

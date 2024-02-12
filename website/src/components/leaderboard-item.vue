@@ -8,8 +8,8 @@ defineProps<{
 </script>
 
 <template>
-    <li>
+    <tr>
         <PlayerBadge :username="data.username"></PlayerBadge>
-        <b v-for="stat in lb.Stat">{{ abbr(data.stats[stat] ?? 0) }}</b>
-    </li>
+        <td v-for="stat in lb.Stat">{{ abbr(data.stats[stat] ?? 0) }}</td>
+    </tr>
 </template>
