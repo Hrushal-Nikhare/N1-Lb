@@ -20,17 +20,35 @@ interface Leaderboard {
     chunks: LeaderboardChunk[],
     stat: Stat
 }
-
-enum Stat {
-    deaths = "deaths",
-    elo = "elo",
-    captures = "flagsCaptured",
-    games_played = "gamesPlayed",
-    wins = "gamesWon",
-    kills = "kills",
-    points = "totalPoints",
-    kdr = "kdratio"
+class Controls {
+    shown_stats: {
+        [key in Stat]: boolean
+    } = {
+        deaths: true,
+        elo: true,
+        flagsCaptured: true,
+        gamesPlayed: true,
+        gamesWon: true,
+        kills: true,
+        totalPoints: true,
+        kdratio: true
+    };
+    sort_stat: Stat = "kills";
 }
 
-export type { Player, PlayerStats, Leaderboard, LeaderboardChunk };
-export { Stat };
+
+type Stat = keyof typeof STATS;
+// object, left is the server name for a property, right is the displayed name
+const STATS = {
+    "deaths": "Deaths",
+    "elo": "Elo",
+    "flagsCaptured": "Captures",
+    "gamesPlayed": "Games Played",
+    "gamesWon": "Wins",
+    "kills": "Kills",
+    "totalPoints": "Points",
+    "kdratio": "KDR"
+}
+
+export type { Player, PlayerStats, Leaderboard, LeaderboardChunk, Stat };
+export { STATS, Controls };

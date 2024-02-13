@@ -24,7 +24,7 @@ function db_player2player(db_player: any): lb.Player {
 
 async function get_with_range(stat: lb.Stat, min: number, max: number): Promise<lb.LeaderboardChunk> {
     let url = '';
-    if (stat === lb.Stat.kdr) {
+    if (stat === "kdratio") {
         url = DB_SERVER_URL +  `/getTopByKDRatioInRange/${min}/${max}`;
     } else {
         url = DB_SERVER_URL + `/getTopByStatInRange/${stat}/${min}/${max}`;
@@ -40,7 +40,7 @@ async function get_with_range(stat: lb.Stat, min: number, max: number): Promise<
 }
 async function get_n(stat: lb.Stat, n: number): Promise<lb.LeaderboardChunk> {
     let url = '';
-    if (stat === lb.Stat.kdr) {
+    if (stat === "kdratio") {
         url = DB_SERVER_URL + `/getTopXByKDRatio/${n}`;
     } else {
         url = DB_SERVER_URL + `/getTopXByStat/${stat}/${n}`;
