@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import VueLeaderboard from '@/components/vue-leaderboard.vue';
 import TitlePage from '@/components/title-page.vue';
-import type { Leaderboard } from '@/lib/leaderboard';
-import { ref, type Ref } from 'vue';
-import { get_with_range, get_n } from '@/lib/db';
-const data: Ref<undefined|Leaderboard> = ref(undefined);
-(async function() {
-    data.value = {
-        chunks: [await get_n("elo", 10)],
-        stat: "elo"
-    };
-})()
+import TopPlayers from '@/components/top-players.vue';
+import LoadingWheel from '@/components/loading-wheel.vue';
 </script>
 
 <template>
     <TitlePage></TitlePage>
-    <VueLeaderboard :data="data" v-if="data"></VueLeaderboard>
+    <Suspense>
+        <TopPlayers></TopPlayers>
+        <template #fallback>
+            <LoadingWheel></LoadingWheel>
+        </template>
+        
+    </Suspense>
+
+    <Suspense>
+        <VueLeaderboard></VueLeaderboard>
+        <template #fallback>
+            <LoadingWheel></LoadingWheel>
+        </template>
+    </Suspense>
 </template>

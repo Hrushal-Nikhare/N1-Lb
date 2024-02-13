@@ -22,7 +22,7 @@ function db_player2player(db_player: any): lb.Player {
     }
 }
 
-async function get_with_range(stat: lb.Stat, min: number, max: number): Promise<lb.LeaderboardChunk> {
+async function get_with_range(stat: lb.Stat, min: number, max: number): Promise<lb.Player[]> {
     let url = '';
     if (stat === "kdratio") {
         url = DB_SERVER_URL +  `/getTopByKDRatioInRange/${min}/${max}`;
@@ -30,15 +30,9 @@ async function get_with_range(stat: lb.Stat, min: number, max: number): Promise<
         url = DB_SERVER_URL + `/getTopByStatInRange/${stat}/${min}/${max}`;
     }
     let res = await fetch(url);
-    let body = (await res.json()).map((x: any) => db_player2player(x)) as lb.Player[];
-
-    return {
-        data: body,
-        min: min,
-        max: max
-    };
+    return (await res.json()).map((x: any) => db_player2player(x)) as lb.Player[];
 }
-async function get_n(stat: lb.Stat, n: number): Promise<lb.LeaderboardChunk> {
+async function get_n(stat: lb.Stat, n: number): Promise<lb.Player[]> {
     let url = '';
     if (stat === "kdratio") {
         url = DB_SERVER_URL + `/getTopXByKDRatio/${n}`;
@@ -46,12 +40,6 @@ async function get_n(stat: lb.Stat, n: number): Promise<lb.LeaderboardChunk> {
         url = DB_SERVER_URL + `/getTopXByStat/${stat}/${n}`;
     }
     let res = await fetch(url);
-    let body = (await res.json()).map((x: any) => db_player2player(x)) as lb.Player[];
-    console.log(body);
-    return {
-        data: body,
-        min: body[0].stats[stat]??Number.MIN_VALUE,
-        max: body[body.length - 1].stats[stat]??Number.MAX_VALUE
-    };
+    return (await res.json()).map((x: any) => db_player2player(x)) as lb.Player[];
 }
 export { get_with_range, get_n };
