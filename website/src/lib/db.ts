@@ -11,7 +11,7 @@ function db_player2player(db_player: any): lb.Player {
     stats.kills = db_player.stats.kills;
     stats.totalPoints = db_player.stats.totalPoints;
     if (stats.kills && stats.deaths) {
-        stats.elo = stats.kills / stats.deaths;
+        stats.kdratio = stats.kills / stats.deaths;
     }
     return {
         id: db_player.dbId,
