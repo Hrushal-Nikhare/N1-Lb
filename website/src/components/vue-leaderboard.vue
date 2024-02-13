@@ -13,12 +13,12 @@ const controls: Ref<lb.Controls> = ref(new lb.Controls());
     <div class="leaderboard-container">
         <LeaderboardControls v-model="controls"></LeaderboardControls>
         <table class="leaderboard">
-            <thead>
+            <thead><tr>
                 <td></td>
                 <template v-for="key in Object.keys(lb.STATS)">
                     <th v-if="controls.shown_stats[key as lb.Stat]">{{ lb.STATS[key as lb.Stat] }}</th>
                 </template>
-            </thead>
+            </tr></thead>
             <tbody>
                 <template v-for="chunk in data.chunks">
                     <LeaderboardItem v-for="player in chunk.data" :data="player" :controls="controls"></LeaderboardItem>
