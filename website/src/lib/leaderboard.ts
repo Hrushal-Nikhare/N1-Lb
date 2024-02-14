@@ -33,7 +33,6 @@ class Controls {
         totalPoints: true,
         kdratio: true
     };
-    sort_stat: Stat = "kills";
 }
 
 

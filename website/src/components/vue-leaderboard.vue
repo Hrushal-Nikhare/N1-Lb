@@ -2,18 +2,30 @@
 import * as lb from '@/lib/leaderboard';
 import LeaderboardItem from './leaderboard-item.vue';
 import LeaderboardControls from './leaderboard-controls.vue';
-import { ref, type Ref } from 'vue';
+import { ref, type LabelHTMLAttributes, type Ref } from 'vue';
 import { get_n } from '@/lib/db';
 
-const data = ref({
-    chunks: [{
-        data: await get_n("elo", 10), 
-        min:0, 
-        max:0
-    }],
+const data: Ref<lb.Leaderboard> = ref({
+    chunks: [],
     stat: "elo"
 });
+await reload_data();
 const controls: Ref<lb.Controls> = ref(new lb.Controls());
+
+function sortby(stat: lb.Stat) {
+    data.value.stat = stat
+    reload_data();
+}
+async function reload_data() {
+    data.value = {
+        chunks: [{
+            data: await get_n(data.value.stat as lb.Stat, 50),
+            min: 0,
+            max: 0
+        }],
+        stat: data.value.stat
+    }
+}
 </script>
 
 <template>
@@ -22,8 +34,8 @@ const controls: Ref<lb.Controls> = ref(new lb.Controls());
         <table class="leaderboard">
             <thead><tr>
                 <td></td>
-                <template v-for="key in Object.keys(lb.STATS)">
-                    <th v-if="controls.shown_stats[key as lb.Stat]">{{ lb.STATS[key as lb.Stat] }}</th>
+                <template v-for="stat in Object.keys(lb.STATS)">
+                    <th v-if="controls.shown_stats[stat as lb.Stat]" @click="sortby(stat as lb.Stat)">{{ lb.STATS[stat as lb.Stat] }}</th>
                 </template>
             </tr></thead>
             <tbody>
