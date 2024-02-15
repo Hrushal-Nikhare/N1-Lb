@@ -1,0 +1,27 @@
+{
+	"manifest_version": 3,
+	"name": "N1 Leaderboard",
+	"description": "Unofficial Extension for N1",
+	"version": "1.0",
+	"action": {
+		"default_icon": "icon.png"
+	},
+	"permissions": [
+		"storage",
+		"unlimitedStorage",
+		"webRequest",
+		"tabs",
+		"activeTab"
+	],
+	"content_scripts": [
+		{
+			"world": "MAIN",
+			"run_at": "document_start",
+			"matches": ["https://narrow.one/*"],
+			"js": ["getData.js"]
+		}
+	],
+	"background": {
+		"service_worker": "background.js"
+	}
+}

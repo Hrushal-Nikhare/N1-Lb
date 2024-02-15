@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 500 500"
+   version="1.1"
+   sodipodi:docname="favicon.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   inkscape:export-filename="C:\Users\jacob\Documents\GitHub\N1-Lb\extension\icon.png"
+   inkscape:export-xdpi="24.576"
+   inkscape:export-ydpi="24.576"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs831">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Pixellize"
+       id="filter1965"
+       x="-0.060677261"
+       y="-0.056844727"
+       width="1.1213545"
+       height="1.1136895"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes">
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="10"
+         result="blur1"
+         id="feGaussianBlur1949" />
+      <feComposite
+         in="blur1"
+         in2="blur1"
+         operator="in"
+         result="composite1"
+         id="feComposite1951" />
+      <feComposite
+         in="composite1"
+         in2="composite1"
+         k2="0.551084"
+         operator="arithmetic"
+         result="composite2"
+         id="feComposite1953" />
+      <feColorMatrix
+         in="composite2"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 10 0 "
+         result="colormatrix1"
+         id="feColorMatrix1955" />
+      <feGaussianBlur
+         stdDeviation="1"
+         result="blur2"
+         id="feGaussianBlur1957" />
+      <feColorMatrix
+         in="blur2"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 5 -1 "
+         result="colormatrix2"
+         id="feColorMatrix1959" />
+      <feBlend
+         in="SourceGraphic"
+         in2="colormatrix2"
+         stdDeviation="17"
+         mode="normal"
+         result="blend"
+         id="feBlend1961" />
+      <feComposite
+         in="blend"
+         in2="colormatrix2"
+         operator="in"
+         result="fbSourceGraphic"
+         id="feComposite1963" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix7470" />
+      <feColorMatrix
+         id="feColorMatrix7472"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         in="fbSourceGraphic" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview829"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:object-nodes="false"
+     inkscape:zoom="1.0790449"
+     inkscape:rotation="-1"
+     inkscape:cx="297.75328"
+     inkscape:cy="146.54752"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <style
+     id="style824">
+		path { fill: black; }
+		@media (prefers-color-scheme: dark) {
+			path { fill: white; }
+		}
+	</style>
+  <path
+     id="path11052"
+     style="fill:#136f63;stroke-width:7.81708;stroke-linecap:square;fill-opacity:1"
+     d="M 256.88477 15.828125 C 238.61263 15.666136 220.29707 17.686676 202.36914 21.683594 C 144.88012 34.50041 91.368078 67.649447 54.984375 121.7793 C 26.285358 164.47625 18.580648 213.40414 18.947266 260.36719 C 19.509247 332.35674 46.988368 400.69126 109.05273 442.4082 C 168.2891 482.22429 237.5893 472.02101 302.20703 449.32227 C 349.45839 432.72392 397.9406 418.537 426.35938 371.40234 C 493.17892 260.5771 474.84366 119.70481 372.29102 50.773438 C 337.07527 27.102963 297.08346 16.1845 256.88477 15.828125 z M 283.41992 72.503906 C 284.89564 72.647255 286.12434 73.14778 287.02539 74.048828 C 294.23378 81.257216 305.37272 116.64449 302.42383 145.15039 C 299.47494 173.65629 294.56089 189.3832 288.00781 200.52344 C 281.45473 211.66367 172.3457 266.71094 172.3457 266.71094 C 172.3457 266.71094 137.51779 289.52821 133.58594 283.34375 C 129.65409 277.15928 137.20467 263.76153 145.06836 248.68945 C 152.93206 233.61736 161.99818 198.56179 162.51562 178.89844 C 163.17093 153.99674 168.94236 150.8445 183.61133 141.16016 C 199.31542 130.79244 207.57635 113.71328 219.52734 118.61133 C 229.39816 122.65682 229.35742 145.47852 229.35742 145.47852 C 229.35742 145.47852 235.9117 131.06078 243.77539 108.125 C 250.65613 88.056192 273.08986 71.500466 283.41992 72.503906 z M 299.30273 235.34961 C 300.09187 235.42901 300.80117 235.59678 301.42383 235.85742 C 304.8088 237.27438 299.84865 254.61739 322.77344 257.12305 C 350.40584 260.14325 396.79074 281.56363 397.17969 289.36133 C 397.57281 297.24249 375.17078 304.56783 361.89453 307.67969 C 338.5791 313.14467 304.2163 290.03148 287.75391 303.04492 C 277.45025 311.18991 298.84728 328.78234 291.99414 338.26367 C 286.72329 345.55591 263.08681 351.53724 254.55078 350.85742 C 245.18545 350.11156 226.25783 340.98486 211.56445 337.88281 C 171.57651 329.44061 109.8364 339.83601 107.08789 332.59961 C 104.17243 324.92365 194.26754 283.05752 226.89648 267.32812 C 257.48611 252.58183 287.4657 234.15861 299.30273 235.34961 z " />
+</svg>
