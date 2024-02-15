@@ -1,4 +1,9 @@
 let hasRun = false;
+let debug = false;
+
+function debugLog(...args) {
+	if (debug) console.log("[getData.js]", ...args);
+}
 
 async function getData() {
 	// Open the IndexedDB database
@@ -24,12 +29,13 @@ async function getData() {
 			var cachedProfileState = event.target.result;
 
 			// Do something with cachedProfileState
-			console.log("Cached Profile State:", cachedProfileState);
-			console.log(JSON.stringify(cachedProfileState));
-
+			debugLog("Cached Profile State:",cachedProfileState)
+			// debugLog("Json Format for api test :) :", JSON.stringify(cachedProfileState))
 
 			// The URL where you want to send the POST request
 			const apiUrl = "https://n1-api.vercel.app/api/post";
+
+			debugLog(`Sending POST request to: ${apiUrl}`);
 
 			// send the POST request
 			fetch(apiUrl, {
@@ -43,11 +49,15 @@ async function getData() {
 					if (!response.ok) {
 						throw new Error("Network response was not ok");
 					}
-					console.log({ success: true });
+					// console.log({ success: true });
+					debugLog("POST request was successful");
 				})
 				.catch((error) => {
-					console.error("Error:", error.message);
-					console.log({ success: false, error: error.message });
+					// console.error("Error:", error.message);
+					debugLog("POST request failed");
+					console.log(
+						debug ? { success: false, error: error.message } : ""
+					);
 				});
 		};
 
