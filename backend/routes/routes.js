@@ -180,6 +180,10 @@ router.get("/getOne/:id", cacheMiddleware, async (req, res) => {
 router.get("/getTopXByKDRatio/:x", cacheMiddleware, async (req, res) => {
 	try {
 		const x = Number(req.params.x);
+		if (!cachedData.topXByKDRatio) {
+			// If the cache is not available, fetch and cache it
+			cachedData.topXByKDRatio = await getTopXUsersByKDRatio(x);
+		}
 		res.json(cachedData.topXByKDRatio.slice(0, x));
 	} catch (error) {
 		res.status(500).json({ message: error.message });
