@@ -58,6 +58,6 @@ const dataSchema = new mongoose.Schema({
 		},
 		required: ["username", "verified"],
 	},
-},{ timestamps: true });
+},{ timestamps: true,strict: false });
 
 module.exports = mongoose.model("test", dataSchema);

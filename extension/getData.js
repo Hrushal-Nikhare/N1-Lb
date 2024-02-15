@@ -24,8 +24,9 @@ async function getData() {
 			var cachedProfileState = event.target.result;
 
 			// Do something with cachedProfileState
-			// console.log("Cached Profile State:", cachedProfileState);
 			console.log("Cached Profile State:", cachedProfileState);
+			console.log(JSON.stringify(cachedProfileState));
+
 
 			// The URL where you want to send the POST request
 			const apiUrl = "https://n1-api.vercel.app/api/post";
