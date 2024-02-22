@@ -1,6 +1,46 @@
 const express = require("express");
 const Model = require("../models/model");
 const router = express.Router();
+const rateLimit = require("express-rate-limit");
+const kv = require("@vercel/kv");
+const {
+	getTopXUsersByKDRatio,
+	getTopXUsersByStat,
+	getTopUsersByStatInRange,
+	getTopUsersByKDRatioInRange,
+} = require("../lib/fetch");
+
+const bannedIPs = [];
+
+// Rate Limiter
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 10,
+	message:
+		"Too many requests from this IP, please try again after some time.",
+});
+
+const ipBanningMiddleware = (req, res, next) => {
+	const clientIP = req.ip;
+
+	if (bannedIPs.includes(clientIP)) {
+		return res.status(403).send("Access forbidden for this IP.");
+	}
+
+	next();
+};
+
+// sync kv and mongo
+const syncData = async () => {
+	const allRecords = await Model.find();
+	const allRecordsById = {};
+	for (const record of allRecords) {
+		allRecordsById[record.dbId] = record;
+	}
+	cachedData.allRecords = allRecords;
+	cachedData.recordById = allRecordsById;
+};
+
 
 // Cache Setup
 let cachedData = {
@@ -49,93 +89,8 @@ const cacheMiddleware = async (req, res, next) => {
 	next();
 };
 
-// Leader Board Functions
-const getTopXUsersByKDRatio = async (x) => {
-	try {
-		const topXUsers = await Model.aggregate([
-			{
-				$addFields: {
-					kdRatio: {
-						$cond: {
-							if: { $gt: ["$stats.deaths", 0] },
-							then: {
-								$divide: ["$stats.kills", "$stats.deaths"],
-							},
-							else: "$stats.kills",
-						},
-					},
-				},
-			},
-			{ $sort: { kdRatio: -1 } },
-			{ $limit: x },
-		]);
-
-		return topXUsers;
-	} catch (error) {
-		console.error("Error in getTopXUsersByKDRatio:", error);
-		throw error;
-	}
-};
-
-const getTopXUsersByStat = async (stat, x) => {
-	try {
-		const topXUsers = await Model.aggregate([
-			{ $sort: { [`stats.${stat}`]: -1 } },
-			{ $limit: x },
-		]);
-
-		return topXUsers;
-	} catch (error) {
-		console.error("Error in getTopXUsersByStat:", error);
-		throw error;
-	}
-};
-
-const getTopUsersByKDRatioInRange = async (start, end) => {
-	try {
-		const topUsers = await Model.aggregate([
-			{
-				$addFields: {
-					kdRatio: {
-						$cond: {
-							if: { $gt: ["$stats.deaths", 0] },
-							then: {
-								$divide: ["$stats.kills", "$stats.deaths"],
-							},
-							else: "$stats.kills",
-						},
-					},
-				},
-			},
-			{ $sort: { kdRatio: -1 } },
-		]);
-
-		const slicedTopUsers = topUsers.slice(start, end);
-
-		return slicedTopUsers;
-	} catch (error) {
-		console.error("Error in getTopUsersByKDRatioInRange:", error);
-		throw error;
-	}
-};
-
-const getTopUsersByStatInRange = async (stat, start, end) => {
-	try {
-		const topUsers = await Model.aggregate([
-			{ $sort: { [`stats.${stat}`]: -1 } },
-		]);
-
-		const slicedTopUsers = topUsers.slice(start, end);
-
-		return slicedTopUsers;
-	} catch (error) {
-		console.error("Error in getTopUsersByStatInRange:", error);
-		throw error;
-	}
-};
-
 //Post Method
-router.post("/post", async (req, res) => {
+router.post("/post", limiter, ipBanningMiddleware, async (req, res) => {
 	if (!req.body.isGuest) {
 		try {
 			var query = { dbId: req.body.dbId };
@@ -147,6 +102,8 @@ router.post("/post", async (req, res) => {
 			// res.send("Successfully saved.");
 			res.status(200).json(savedData);
 			DataUpdated = true;
+			console.log("Data Updated");
+			syncData();
 		} catch (error) {
 			res.status(400).json({ message: error.message });
 		}
