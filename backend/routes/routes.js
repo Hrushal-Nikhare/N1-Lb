@@ -50,7 +50,7 @@ let cachedData = {
 	topXByStat: {},
 };
 
-let DataUpdated = false;
+let DataUpdated = true;
 
 // Function to update the cache
 const updateCache = async () => {
@@ -90,7 +90,7 @@ const cacheMiddleware = async (req, res, next) => {
 };
 
 //Post Method
-router.post("/post", limiter, ipBanningMiddleware, async (req, res) => {
+router.post("/post", ipBanningMiddleware, async (req, res) => {
 	if (!req.body.isGuest) {
 		try {
 			var query = { dbId: req.body.dbId };
