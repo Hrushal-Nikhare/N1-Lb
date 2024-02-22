@@ -103,10 +103,10 @@ router.post("/post", ipBanningMiddleware, async (req, res) => {
 				runValidators: true,
 			});
 			// res.send("Successfully saved.");
-			res.status(200).json(savedData);
-			DataUpdated = true;
 			console.log("Data Updated");
 			syncData();
+			res.status(200).json(savedData);
+			DataUpdated = true;
 		} catch (error) {
 			res.status(400).json({ message: error.message });
 		}
