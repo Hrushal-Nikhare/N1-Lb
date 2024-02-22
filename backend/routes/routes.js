@@ -32,16 +32,15 @@ const ipBanningMiddleware = (req, res, next) => {
 
 // sync kv and mongo
 function syncData(){
-	Model.find({}, (err, data) => {
-		if (err) {
-			console.log(err);
+	(async () => {
+		const data = await Model.find();
+		const kvData = await kv.get("allRecords");
+		if (kvData === null) {
+			await kv.put("allRecords", JSON.stringify(data));
 		} else {
-			data.forEach(async (record) => {
-				await kv.set(record.dbId, JSON.stringify(record));
-			});
+			await kv.put("allRecords", JSON.stringify(data));
 		}
-	});
-
+	})();
 }
 
 
