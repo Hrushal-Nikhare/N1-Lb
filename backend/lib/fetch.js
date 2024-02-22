@@ -1,3 +1,5 @@
+const Model = require("../models/model");
+
 const getTopXUsersByKDRatio = async (x) => {
 	try {
 		const topXUsers = await Model.aggregate([

@@ -103,7 +103,7 @@ router.post("/post", ipBanningMiddleware, async (req, res) => {
 			res.status(200).json(savedData);
 			DataUpdated = true;
 			console.log("Data Updated");
-			syncData();
+			await syncData();
 		} catch (error) {
 			res.status(400).json({ message: error.message });
 		}
