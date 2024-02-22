@@ -31,15 +31,19 @@ const ipBanningMiddleware = (req, res, next) => {
 };
 
 // sync kv and mongo
-const syncData = async () => {
-	const allRecords = await Model.find();
-	const allRecordsById = {};
-	for (const record of allRecords) {
-		allRecordsById[record.dbId] = record;
-	}
-	cachedData.allRecords = allRecords;
-	cachedData.recordById = allRecordsById;
-};
+function syncData(){
+
+	Model.find({}, (err, data) => {
+		if (err) {
+			console.log(err);
+		} else {
+			data.forEach(async (record) => {
+				await kv.set(record.dbId, JSON.stringify(record));
+			});
+		}
+	});
+
+}
 
 
 // Cache Setup
