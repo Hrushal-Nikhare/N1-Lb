@@ -32,7 +32,6 @@ const ipBanningMiddleware = (req, res, next) => {
 
 // sync kv and mongo
 function syncData(){
-
 	Model.find({}, (err, data) => {
 		if (err) {
 			console.log(err);
@@ -107,7 +106,7 @@ router.post("/post", ipBanningMiddleware, async (req, res) => {
 			res.status(200).json(savedData);
 			DataUpdated = true;
 			console.log("Data Updated");
-			await syncData();
+			syncData();
 		} catch (error) {
 			res.status(400).json({ message: error.message });
 		}
