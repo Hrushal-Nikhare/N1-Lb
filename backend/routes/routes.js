@@ -33,14 +33,7 @@ const ipBanningMiddleware = (req, res, next) => {
 };
 
 async function syncData(){
-	const data = await Model.find();
-	await Promise.all(data.map(async (d) => {
-		try {
-			await kv.set(d.dbId, JSON.stringify(d));
-		} catch (error) {
-			console.error(`Error updating ${d.dbId}:`, error);
-		}
-	}));
+
 }
 
 // Cache Setup
@@ -57,7 +50,15 @@ let DataUpdated = true;
 const updateCache = async () => {
 	try {
 		// Update the cache based on your business logic
-		cachedData.allRecords = await Model.find();
+		const data = await Model.find();
+		await Promise.all(data.map(async (d) => {
+			try {
+				await kv.set(d.dbId, JSON.stringify(d));
+			} catch (error) {
+				console.error(`Error updating ${d.dbId}:`, error);
+			}
+		}));
+		cachedData.allRecords = data;
 		cachedData.topXByKDRatio = await getTopXUsersByKDRatio(10);
 		const stats = [
 			"deaths",
@@ -101,8 +102,6 @@ router.post("/post", ipBanningMiddleware, async (req, res) => {
 				runValidators: true,
 			});
 			// res.send("Successfully saved.");
-			console.log("Data Updated");
-			await syncData();
 			res.status(200).json(savedData);
 			DataUpdated = true;
 		} catch (error) {
