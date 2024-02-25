@@ -2,7 +2,8 @@ const express = require("express");
 const Model = require("../models/model");
 const router = express.Router();
 const rateLimit = require("express-rate-limit");
-const kv = require("@vercel/kv");
+const { kv } = require('@vercel/kv');
+
 
 const {
 	getTopXUsersByKDRatio,
