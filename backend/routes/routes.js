@@ -36,8 +36,7 @@ async function syncData(){
 		// const kvData = await kv.list();
 		//  for each data in mongo, check if it exists in kv
 		data.forEach((d) => {
-				// kv.put(d.dbId, JSON.stringify(d));
-				kv.set(d.dbId, JSON.stringify(d))
+			await kv.set(d.dbId, JSON.stringify(d))
 		});
 }
 
