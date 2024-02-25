@@ -33,11 +33,14 @@ const ipBanningMiddleware = (req, res, next) => {
 };
 
 async function syncData(){
-    const data = await Model.find();
-    data.forEach(async (d) => {
-        await kv.set(d.dbId, JSON.stringify(d));
-    });
-    return;
+	const data = await Model.find();
+	await Promise.all(data.map(async (d) => {
+		try {
+			await kv.set(d.dbId, JSON.stringify(d));
+		} catch (error) {
+			console.error(`Error updating ${d.dbId}:`, error);
+		}
+	}));
 }
 
 // Cache Setup
