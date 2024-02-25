@@ -31,8 +31,7 @@ const ipBanningMiddleware = (req, res, next) => {
 };
 
 // sync kv and mongo
-function syncData(){
-	(async () => {
+async function syncData(){
 		const data = await Model.find();
 		const kvData = await kv.list();
 		//  for each data in mongo, check if it exists in kv
@@ -42,7 +41,6 @@ function syncData(){
 				kv.set(d.dbId, JSON.stringify(d))
 			}
 		});
-	})();
 }
 
 
@@ -105,7 +103,7 @@ router.post("/post", ipBanningMiddleware, async (req, res) => {
 			});
 			// res.send("Successfully saved.");
 			console.log("Data Updated");
-			syncData();
+			await syncData();
 			res.status(200).json(savedData);
 			DataUpdated = true;
 		} catch (error) {
